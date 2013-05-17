@@ -25,7 +25,7 @@ EOS
   ### Subspecs
   
   s.subspec 'Core' do |cs|
-    cs.source_files =  'Code/*.h', 'Vendor/LibComponentLogging/Core', 'Vendor/LibComponentLogging/NSLog'
+    cs.source_files =  'Code/*.h', 'Vendor/LibComponentLogging/Core', 'Vendor/LibComponentLogging/NSLog', 'Vendor/LibComponentLogging/DDLog'
     cs.header_dir   =  'RestKit'
     
     cs.dependency 'RestKit/ObjectMapping'

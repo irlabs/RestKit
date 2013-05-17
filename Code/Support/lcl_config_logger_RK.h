@@ -23,5 +23,9 @@
 #ifdef RKLOG_USE_NSLOGGER
 #import "LCLNSLogger_RK.h"
 #else
+#ifdef RKLOG_USE_DDLOG
+#import "LCLDDLog_RK.h"
+#else
 #import "LCLNSLog_RK.h"
+#endif
 #endif
