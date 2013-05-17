@@ -7,6 +7,7 @@
 //
 
 // ARC/non-ARC autorelease pool
+#undef _RKlcl_logger_autoreleasepool_arc
 #define _RKlcl_logger_autoreleasepool_arc 0
 #if defined(__has_feature)
 #   if __has_feature(objc_arc)
@@ -30,26 +31,28 @@
 // back-end for LibComponentLogging.
 
 #if 0
+#undef _RKlcl_logger
 #define _RKlcl_logger(_component, _level, _format, ...) {                      \
-_RKlcl_logger_autoreleasepool_begin                                        \
-[LCLDDLog_RK logWithComponent:_component                                   \
-level:_level                                       \
-path:@__FILE__                                     \
-line:__LINE__                                     \
-format:_format,                                     \
-## __VA_ARGS__];                                \
-_RKlcl_logger_autoreleasepool_end                                          \
+	_RKlcl_logger_autoreleasepool_begin                                        \
+	[LCLDDLog_RK logWithComponent:_component                                   \
+							level:_level                                       \
+							 path:@__FILE__                                    \
+							 line:__LINE__                                     \
+						   format:_format,                                     \
+							   ## __VA_ARGS__];                                \
+	_RKlcl_logger_autoreleasepool_end                                          \
 }
 #else
+#undef _RKlcl_logger
 #define _RKlcl_logger(_component, _level, _format, ...) {                      \
-_RKlcl_logger_autoreleasepool_begin                                        \
-[LCLDDLog_RK logWithComponent:_component                                   \
-level:_level                                       \
-path:@__FILE__                                     \
-line:__LINE__                                     \
-format:_format,                                     \
-## __VA_ARGS__];                                \
-_RKlcl_logger_autoreleasepool_end                                          \
+	_RKlcl_logger_autoreleasepool_begin                                        \
+	[LCLDDLog_RK logWithComponent:_component                                   \
+							level:_level                                       \
+							 path:@__FILE__                                    \
+							 line:__LINE__                                     \
+						   format:_format,                                     \
+							   ## __VA_ARGS__];                                \
+	_RKlcl_logger_autoreleasepool_end                                          \
 }
 #endif
 

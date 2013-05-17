@@ -52,6 +52,7 @@
 
 
 // ARC/non-ARC autorelease pool
+#undef _RKlcl_logger_autoreleasepool_arc
 #define _RKlcl_logger_autoreleasepool_arc 0
 #if defined(__has_feature)
 #   if __has_feature(objc_arc)
@@ -74,6 +75,7 @@
 
 // A very simple logger, which redirects to NSLog().
 #if 0
+#undef _RKlcl_logger
 #define _RKlcl_logger(_component, _level, _format, ...) {                        \
     _RKlcl_logger_autoreleasepool_begin                                          \
     NSLog(@"%s %s:%@:%d:%s " _format,                                          \
@@ -86,6 +88,7 @@
     _RKlcl_logger_autoreleasepool_end                                            \
 }
 #else
+#undef _RKlcl_logger
 #define _RKlcl_logger(_component, _level, _format, ...) {                        \
     _RKlcl_logger_autoreleasepool_begin                                          \
     NSLog(@"%s %s:%@:%d " _format,                                             \
